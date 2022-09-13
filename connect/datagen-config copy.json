@@ -1,0 +1,11 @@
+{
+    "name" : "DatagenSourceConnector_1",
+    "connector.class": "DatagenSource",
+    "kafka.auth.mode": "KAFKA_API_KEY",
+    "kafka.api.key": "XXXXXXXXXXXX",
+    "kafka.api.secret" : "XXXXXXXXXXXXXXXXXXXXXXXX",
+    "kafka.topic" : "datagen-source-1",
+    "output.data.format" : "JSON",
+    "quickstart" : "TRANSACTIONS",
+    "tasks.max" : "1"
+}

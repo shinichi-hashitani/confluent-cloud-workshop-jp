@@ -1,0 +1,18 @@
+{
+    "name" : "HttpSinkConnector_0",
+    "kafka.auth.mode": "KAFKA_API_KEY",
+    "connector.class": "HttpSink",
+    "kafka.api.key": "XXXXXXXXXXXX",
+    "kafka.api.secret" : "XXXXXXXXXXXXXXXXXXXXXXXX",
+    "tasks.max" : "1",
+    "topics": "http-sink",
+    "http.api.url": "https://webhook.site/976e95d4-0d23-44d4-930f-0010c9485526",
+    "input.data.format": "JSON",
+    "value.converter.schemas.enable": "false",
+    "headers": "Content-Type:application/vnd.kafka.json.v2+json",
+    "request.body.format": "json",
+    "batch.json.as.array": "true",
+    "reporter.result.topic.name": "",
+    "reporter.error.topic.name": ""
+}
+
