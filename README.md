@@ -35,6 +35,12 @@ confluent kafka cluster use lkc-xxxxx
 ```
 
 ## DageGen Connector (WEB UI)
+Confluent Cloudでは多数のConnectorをフルマネージドでご提供しており、UIから設定が可能です。`Connectors`メニューより新規に追加可能です。
+![Confluent Cloud](./assets/connect1.png)
+DataGen Connectorはテストデータのストリームを自動生成する検証用Connectorです。このConnectorは外部からのProducerアクセスを擬似的に再現するConnectorで、指定されたTopicに対してランダムなテストイベントを送り続けます。
+![Confluent Cloud](./assets/connect2.png)
+イベントの種類は複数の選択肢から選ぶ事が可能です。またSchemaのタイプ等の設定もUI上で出来ます。イベントはランダムに出力されますがSchema自体は固定です。イベントの構成を変更することはできません。
+![Confluent Cloud](./assets/connect3.png)
 
 ## DataGen Connector (CLI)
 ### 利用可能なConnectorのリスト
@@ -105,4 +111,19 @@ AS SELECT
 FROM DataGen1
 EMIT CHANGES;
 ```
+データの流れをStream Lineageで確認後、削除します。
+
+Source StreamをそのままSinkのTopicに流し込むパイプラインを作成
+```sql
+CREATE TABLE AGGREGATED_PIPE
+WITH (KAFKA_TOPIC='http-sink', VALUE_FORMAT='JSON')
+AS SELECT
+    STORE_ID AS STORE_ID,
+    COUNT(*) AS TOTAL
+FROM DataGen1
+WINDOW TUMBLING (SIZE 1 minute)
+GROUP BY STORE_ID
+EMIT CHANGES;
+```
+データの流れをStream Lineageで確認後、削除します。
 

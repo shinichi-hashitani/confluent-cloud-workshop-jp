@@ -6,7 +6,7 @@
     "kafka.api.secret" : "XXXXXXXXXXXXXXXXXXXXXXXX",
     "tasks.max" : "1",
     "topics": "http-sink",
-    "http.api.url": "https://webhook.site/976e95d4-0d23-44d4-930f-0010c9485526",
+    "http.api.url": "https://webhook.site/xxxxxxxx",
     "input.data.format": "JSON",
     "value.converter.schemas.enable": "false",
     "headers": "Content-Type:application/vnd.kafka.json.v2+json",
@@ -15,4 +15,3 @@
     "reporter.result.topic.name": "",
     "reporter.error.topic.name": ""
 }
-
